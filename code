@@ -1,0 +1,33 @@
+import random
+
+random_integer = random.randint(1, 100)  # Random integer between 1 and 100 (inclusive)
+print(random_integer)
+print("Welcome to Number Guessing Game!\nI am thinking of a number between 1 and 100.")
+
+level = input("Choose a difficulty. Type 'hard' or 'easy': ").lower()
+if level == 'hard':
+    total_guess = 5
+elif level == 'easy':
+    total_guess = 10
+else:
+    print("Invalid choice! Defaulting to easy mode.")
+    total_guess = 10
+
+print(f"You have {total_guess} attempts remaining to guess the number.")
+
+while total_guess > 0:
+    guess = int(input("Make a guess: "))  # convert input to integer
+
+    if guess == random_integer:
+        print("You won 🎉")
+        break
+    elif guess > random_integer:
+        print("Too high.")
+    else:
+        print("Too low.")
+
+    total_guess -= 1
+    if total_guess > 0:
+        print(f"You have {total_guess} attempts remaining.")
+    else:
+        print(f"You've run out of guesses. You lose 😢 The number was {random_integer}.")
